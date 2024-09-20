@@ -1,11 +1,62 @@
+//-----------------Arrumar-------------------
+import { useEffect, useState } from 'react'
 import './styles.css'
+import Card from '../../components/Card'
+import Filter from '../../components/Filter'
+import Pagination from '../../components/Pagination'
 
-export default function ApiTheCat() {
+export default function RickAndMortyApi() {
+    const [ conteudo, setConteudo ] = useState(<></>)
+    const [ busca, setBusca ] = useState('');
+    const [ page, setPage ] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+  
+    async function carregarTodosPersonagens() {
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      
+      const response = await fetch(
+        `https://api.thecatapi.com/v1/images/0XYvRd7oD`
+      )
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      return { info: data.info, char: data.results, }
+    }
+  
+    async function listaPersonagens() {
+      const { char: todosPersonagens, info } = await carregarTodosPersonagens()
+      setTotalPages(info.pages)
+  
+      return todosPersonagens.map(personagem =>
+        <Card data={personagem} />
+      )
+    }
+  
+    useEffect(() => {
+      async function getConteudo() {
+        setConteudo(await listaPersonagens())
+      }
+      getConteudo()
+    }, [page, busca])
+  
     return (
-        //-----------Apena improviso pra pagina rodar, fazer essa página---------------
-        <div className='about-page'>
-            <h2>Venha você também descobrir o universo do Rick and Morty</h2>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur atque natus amet harum nobis excepturi rerum consequatur mollitia illum dolores, tempore ratione earum, reprehenderit alias modi inventore? Nulla, dolorem quasi?</span>
+      <div>
+        <Filter busca={busca} setBusca={setBusca} />
+        <div className='lista-principal'>
+            { conteudo }
         </div>
+        <Pagination 
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+      </div>
     )
-}
+  }
