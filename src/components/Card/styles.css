@@ -1,9 +1,0 @@
-.card {
-    width: 300px; /* largura do card */
-    border: 1px solid #ddd; /* borda do card */
-    border-radius: 8px; /* borda arredondada */
-    overflow: hidden; /* evita que conteúdo saia do card */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* sombra do card */
-    transition: transform 0.2s; /* animação ao passar o mouse */
-
-}
