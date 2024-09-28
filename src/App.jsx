@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
+// import Card from './components/Card'
 import Footer from './components/Footer'
+// import Filter from './components/Filter'
 import Header from './components/Header'
 import Home from './pages/Home'
 import About from './pages/About'
