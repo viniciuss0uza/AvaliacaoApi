@@ -1,12 +1,48 @@
 /* mock: cente */
 
- .card {
+ /* .card {
     width: 300px;
     height: fit-content;
-    color: white;
+    color: white; 
     overflow: hidden;
     background-color: rgb(60, 62, 68);
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
 
+}*/
+/* .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
 }
+.cat {
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 80%;
+    display: flex;
+    gap: 1rem;
+} */
+
+.card {
+    width: 160px; /* Largura do card */
+    height: 180px;
+    border: 1px solid #2b2b2b;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .card img {
+    width: 100%; /* A imagem ocupará toda a largura do card */
+    height: auto; /* A altura será ajustada proporcionalmente */
+  }
+  
+  .card .caption {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+  }
